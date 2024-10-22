@@ -22,6 +22,17 @@ function rotatePoint(point, pivot, rotation) {
 }
 
 
+function movePointAtAngle(point, angle, distance) {
+    var changeX = Math.cos(angle) * distance;
+    var changeY = Math.sin(angle) * distance;
+
+    return {
+        x: point.x + changeX,
+        y: point.y + changeY
+    };
+}
+
+
 class Polygon {
     constructor(points) {
         this.points = points;
