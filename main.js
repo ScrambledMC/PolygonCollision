@@ -49,6 +49,12 @@ try {
     }
 
     function draw() {
+        var currentXyz = {
+            x: player.xyz.x,
+            y: player.xyz.y
+        };
+        var currentRot = player.rotation;
+
         if (keys[87])
             player.xyz.y -= 5;
         if (keys[83])
@@ -67,6 +73,11 @@ try {
             player.xyz = movePointAtAngle(player.xyz, player.rotation, -5);
 
         //w: 87, s: 83, a: 65, d: 68, q: 81, e: 69, up: 38, down: 40, left: 37, right: 39
+
+        if (player.getPolygon().polygonInPolygon(pentagon) === 1) {
+            player.xyz = currentXyz;
+            player.rotation = currentRot;
+        }
 
         drawThings();
     }
