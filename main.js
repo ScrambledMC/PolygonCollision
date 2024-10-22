@@ -16,8 +16,8 @@ try {
         0,
         new Polygon([
             {x: 0, y: -200},
-            {x: 200, y: 200},
-            {x: -150, y: -50}
+            {x: -200, y: 200},
+            {x: 150, y: -50}
         ])
     );
 
@@ -57,12 +57,17 @@ try {
             player.xyz.x -= 5;
         if (keys[68])
             player.xyz.x += 5;
-        if (keys[81])
+        if (keys[81] || keys[37])
             player.rotation -= 0.05;
-        if (keys[69])
+        if (keys[69] || keys[39])
             player.rotation += 0.05;
-        //w: 87, s: 83, a: 65, d: 68, q: 81, e: 69
-        
+        if (keys[38])
+            player.xyz = movePointAtAngle(player.xyz, player.rotation, 5);
+        if (keys[40])
+            player.xyz = movePointAtAngle(player.xyz, player.rotation, -5);
+
+        //w: 87, s: 83, a: 65, d: 68, q: 81, e: 69, up: 38, down: 40, left: 37, right: 39
+
         drawThings();
     }
 
